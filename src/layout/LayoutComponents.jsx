@@ -1,5 +1,10 @@
 import React from "react";
+import { Header } from "../components/header/Header";
 
 export const LayoutComponents = () => {
-  return <div>ali sila</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 };
