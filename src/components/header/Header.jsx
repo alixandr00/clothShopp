@@ -18,7 +18,7 @@ export const Header = () => {
               Flowbite
             </span>
           </a>
-          <div className="flex md:order-2">
+          <div className="flex md:order-2 justify-center items-center gap-8">
             <form className="flex items-center">
               <label htmlFor="simple-search" className="sr-only">
                 Search
@@ -71,6 +71,9 @@ export const Header = () => {
                 <span className="sr-only">Search</span>
               </button>
             </form>
+            <a className="text-blue-500 cursor-pointer to-[#3F5FB0] transform hover:scale-105 transition-transform duration-300">
+              +996 224 24 04 13
+            </a>
           </div>
           <div
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
