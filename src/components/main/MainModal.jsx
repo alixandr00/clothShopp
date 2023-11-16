@@ -8,7 +8,6 @@ export const MainModal = ({ openMainModalHandler }) => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
-    console.log("ali");
   };
 
   return (
