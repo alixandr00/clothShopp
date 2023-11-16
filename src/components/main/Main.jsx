@@ -17,13 +17,7 @@ export const Main = () => {
         добавить одежду
       </button>
       {openMainModal && (
-        <>
-          <MainModal openMainModalHandler={openMainModalHandler} />
-          <div
-            onClick={openMainModalHandler}
-            className="fixed w-screen h-[100vh] top-0 z-[2]"
-          />
-        </>
+        <MainModal openMainModalHandler={openMainModalHandler} />
       )}
     </div>
   );
