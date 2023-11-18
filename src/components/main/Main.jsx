@@ -12,11 +12,6 @@ export const Main = ({ openSidebar }) => {
 
   useEffect(() => {
     const parsedData = JSON.parse(localStorage.getItem("data")) || [];
-    parsedData.forEach((item) => {
-      if (item.img instanceof File) {
-        item.img = URL.createObjectURL(item.img);
-      }
-    });
     setClothes(parsedData);
   }, []);
 
