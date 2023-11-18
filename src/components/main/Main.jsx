@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MainModal } from "./MainModal";
 import { MainTodoClothes } from "./MainTodoClothes";
 
-export const Main = () => {
+export const Main = ({ openSidebar }) => {
   const [openMainModal, setOpenMainModal] = useState(false);
   const [clothes, setClothes] = useState([]);
 
   const openMainModalHandler = () => {
     setOpenMainModal((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const parsedData = JSON.parse(localStorage.getItem("data")) || [];
+    parsedData.forEach((item) => {
+      if (item.img instanceof File) {
+        item.img = URL.createObjectURL(item.img);
+      }
+    });
+    setClothes(parsedData);
+  }, []);
+
+  const deleteHandler = (id) => {
+    const deleteClothes = clothes.filter((item) => item.id !== id);
+    setClothes(deleteClothes);
+    localStorage.setItem("data", JSON.stringify(deleteClothes));
   };
 
   return (
@@ -26,7 +42,11 @@ export const Main = () => {
           openMainModalHandler={openMainModalHandler}
         />
       )}
-      <MainTodoClothes clothes={clothes} />
+      <MainTodoClothes
+        deleteHandler={deleteHandler}
+        openSidebar={openSidebar}
+        clothes={clothes}
+      />
     </div>
   );
 };

@@ -1,13 +1,24 @@
 import React from "react";
+import DeleteIcon from "../../assets/icons/deleteicon.svg";
 
-export const MainTodoClothes = ({ clothes }) => {
+export const MainTodoClothes = ({ clothes, openSidebar, deleteHandler }) => {
   return (
-    <div className="mt-8 flex flex-wrap gap-8 ml-[18rem]">
+    <div
+      className={`mt-8 flex flex-wrap gap-8 ${
+        openSidebar ? "ml-[18rem]" : "ml-[1rem]"
+      } `}
+    >
       {clothes?.map((data) => (
         <div
           key={data.id}
           className="bg-white w-[15rem] h-[17rem] flex flex-col dark:bg-gray-800 p-4 rounded-lg shadow-md transition-transform transform hover:scale-105 duration-300"
         >
+          <img
+            className="w-[1.5rem] h-[1.5rem] absolute left-[12.3rem] cursor-pointer"
+            src={DeleteIcon}
+            alt=""
+            onClick={() => deleteHandler(data.id)}
+          />
           <img
             className="w-[14rem] h-[22vh] object-cover mx-auto mb-4 rounded-lg"
             src={data.img}

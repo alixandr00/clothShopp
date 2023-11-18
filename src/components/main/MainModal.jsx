@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { v4 as uuidv4 } from "uuid";
 
 export const MainModal = ({
   openMainModalHandler,
@@ -14,7 +15,6 @@ export const MainModal = ({
   const [sizeValue, setSizeValue] = useState();
 
   const handleFileChange = (event) => {
-    console.log("event: ", event);
     const file = event.target.files[0];
     setSelectedFile(file);
   };
@@ -25,12 +25,15 @@ export const MainModal = ({
 
   const submitHandler = () => {
     const data = {
+      id: uuidv4(),
       name: nameValue,
       price: `${priceValue} com`,
       size: sizeValue,
-      img: selectedFile ? URL.createObjectURL(selectedFile) : null,
+      img: selectedFile ? selectedFile : null,
     };
-    setClothes([...clothes, data]);
+    const updatedClothes = [...clothes, data];
+    setClothes(updatedClothes);
+    localStorage.setItem("data", JSON.stringify(updatedClothes));
     setNameValue("");
     setPriceValue("");
     setSizeValue("");

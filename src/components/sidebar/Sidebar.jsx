@@ -4,9 +4,7 @@ import OpenMenuIcon from "../../assets/icons/menu-alt-03-svgrepo-com.svg";
 import CloseMenuIcon from "../../assets/icons/menu-alt-02-svgrepo-com.svg";
 import { sidebarData } from "../../utils/constants/sidebarConstant";
 
-export const Sidebar = () => {
-  const [openSidebar, setOpenSidebar] = useState(true);
-
+export const Sidebar = ({ openSidebar, setOpenSidebar }) => {
   const openSidebarHandler = () => {
     setOpenSidebar((prev) => !prev);
   };
