@@ -29,7 +29,7 @@ export const MainModal = ({
       name: nameValue,
       price: `${priceValue} com`,
       size: sizeValue,
-      img: selectedFile ? selectedFile : null,
+      img: selectedFile ? URL.createObjectURL : null,
     };
     const updatedClothes = [...clothes, data];
     setClothes(updatedClothes);
