@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MainModal } from "./MainModal";
-import { MainTodoClothes } from "./mainTodoClothes";
+import { MainTodoClothes } from "./MainTodoClothes";
 
 export const Main = ({ openSidebar }) => {
   const [openMainModal, setOpenMainModal] = useState(false);
