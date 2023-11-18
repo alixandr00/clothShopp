@@ -1,22 +1,22 @@
 export const sidebarData = [
   {
     id: "1",
-    text: "Ali",
+    text: "Home ",
   },
   {
     id: "2",
-    text: "Ali",
+    text: "About",
   },
   {
     id: "3",
-    text: "Ali",
+    text: "Services",
   },
   {
     id: "4",
-    text: "Ali",
+    text: "Contact",
   },
   {
     id: "5",
-    text: "Ali",
+    text: "Settings",
   },
 ];
