@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { v4 as uuidv4 } from "uuid";
 
 export const MainModal = ({
   openMainModalHandler,
@@ -14,7 +15,6 @@ export const MainModal = ({
   const [sizeValue, setSizeValue] = useState();
 
   const handleFileChange = (event) => {
-    console.log("event: ", event);
     const file = event.target.files[0];
     setSelectedFile(file);
   };
@@ -25,12 +25,15 @@ export const MainModal = ({
 
   const submitHandler = () => {
     const data = {
+      id: uuidv4(),
       name: nameValue,
       price: `${priceValue} com`,
       size: sizeValue,
-      img: selectedFile ? URL.createObjectURL(selectedFile) : null,
+      img: selectedFile ? URL.createObjectURL : null,
     };
-    setClothes([...clothes, data]);
+    const updatedClothes = [...clothes, data];
+    setClothes(updatedClothes);
+    localStorage.setItem("data", JSON.stringify(updatedClothes));
     setNameValue("");
     setPriceValue("");
     setSizeValue("");
@@ -95,7 +98,8 @@ export const MainModal = ({
           <div className="flex items-center justify-center mt-10">
             <label
               htmlFor="dropzone-file"
-              className="flex flex-col items-center justify-center h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+              className="flex flex-col items-center justify-center h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800
+dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
             >
               <div className="flex flex-col items-center justify-center p-16 ">
                 <svg

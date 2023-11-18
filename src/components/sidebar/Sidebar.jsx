@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import { IconButton } from "@mui/material";
 import OpenMenuIcon from "../../assets/icons/menu-alt-03-svgrepo-com.svg";
 import CloseMenuIcon from "../../assets/icons/menu-alt-02-svgrepo-com.svg";
 import { sidebarData } from "../../utils/constants/sidebarConstant";
 
-export const Sidebar = () => {
-  const [openSidebar, setOpenSidebar] = useState(true);
+export const Sidebar = ({ setOpenSidebar, openSidebar }) => {
 
   const openSidebarHandler = () => {
     setOpenSidebar((prev) => !prev);
