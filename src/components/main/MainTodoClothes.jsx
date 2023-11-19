@@ -2,11 +2,12 @@ import React from "react";
 import DeleteIcon from "../../assets/icons/deleteicon.svg";
 
 export const MainTodoClothes = ({ clothes, openSidebar, deleteHandler }) => {
+  console.log(clothes?.map((data) => data.img));
   return (
     <div
       className={`mt-8 flex flex-wrap gap-8 ${
         openSidebar ? "ml-[18rem]" : "ml-[1rem]"
-      } `}
+      } transition-ml duration-700 `}
     >
       {clothes?.map((data) => (
         <div
