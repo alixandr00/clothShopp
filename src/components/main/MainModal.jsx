@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { v4 as uuidv4 } from "uuid";
@@ -11,8 +11,8 @@ export const MainModal = ({
 }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [nameValue, setNameValue] = useState("");
-  const [priceValue, setPriceValue] = useState();
-  const [sizeValue, setSizeValue] = useState();
+  const [priceValue, setPriceValue] = useState("");
+  const [sizeValue, setSizeValue] = useState("");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -29,11 +29,12 @@ export const MainModal = ({
       name: nameValue,
       price: `${priceValue} com`,
       size: sizeValue,
-      img: selectedFile ? URL.createObjectURL : null,
+      img: selectedFile ? URL.createObjectURL(selectedFile) : null,
     };
     const updatedClothes = [...clothes, data];
     setClothes(updatedClothes);
     localStorage.setItem("data", JSON.stringify(updatedClothes));
+
     setNameValue("");
     setPriceValue("");
     setSizeValue("");
