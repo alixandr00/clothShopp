@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { v4 as uuidv4 } from "uuid";
+import { RatingStars } from "./RatingStars";
 
 export const MainModal = ({
   openMainModalHandler,
@@ -13,6 +14,7 @@ export const MainModal = ({
   const [nameValue, setNameValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [sizeValue, setSizeValue] = useState("");
+  const [rating, setRating] = useState(0); // Начальный рейтинг
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -30,6 +32,7 @@ export const MainModal = ({
       price: `${priceValue} com`,
       size: sizeValue,
       img: selectedFile ? URL.createObjectURL(selectedFile) : null,
+      rating: rating, // Добавляем рейтинг к данным
     };
     const updatedClothes = [...clothes, data];
     setClothes(updatedClothes);
@@ -39,19 +42,25 @@ export const MainModal = ({
     setPriceValue("");
     setSizeValue("");
     setSelectedFile(null);
+    setRating(0); // Сброс рейтинга после добавления
     setOpenMainModal(false);
+  };
+
+  // Функция для установки рейтинга
+  const setRatingHandler = (newRating) => {
+    setRating(newRating);
   };
 
   return (
     <div className="fixed top-0 flex justify-center items-center w-screen h-screen z-50">
       <div className="w-96 h-[61vh] dark:bg-gray-800 rounded-xl p-4 relative">
-        <div className="w-full flex justify-end ">
+        <div className="w-full flex justify-end">
           <IconButton onClick={openMainModalHandler}>
             <CloseIcon />
           </IconButton>
           {selectedFile && (
             <IconButton
-              className="absolute top-[16.3rem] right-14 "
+              className="absolute top-[16.3rem] right-14"
               onClick={clearSelectedFile}
             >
               <CloseIcon />
@@ -61,15 +70,13 @@ export const MainModal = ({
         <div className="flex flex-col">
           <input
             type="text"
-            id="first_name"
-            class="mt-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="mt-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="пишите название"
             value={nameValue}
             onChange={(e) => setNameValue(e.target.value)}
             required
           />
           <input
-            id="visitors"
             type="number"
             className="mt-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="пишите цену"
@@ -78,7 +85,6 @@ export const MainModal = ({
             required
           />
           <input
-            id="visitors"
             type="number"
             className="mt-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="пишите размер"
@@ -129,18 +135,21 @@ dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-5
             </label>
           </div>
         )}
+        <div className="flex justify-center items-center mt-4">
+          <RatingStars rating={rating} setRating={setRatingHandler} />
+        </div>
         <div className="w-full mt-4 flex justify-end">
           <button
             onClick={openMainModalHandler}
             type="button"
-            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
             Cancel
           </button>
           <button
             onClick={submitHandler}
             type="button"
-            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
             Add
           </button>
