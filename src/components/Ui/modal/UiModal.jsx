@@ -1,31 +1,20 @@
-import { Box, Modal, styled } from "@mui/material";
+import React from "react";
 
 export const UiModal = ({ open, onClose, children, ...rest }) => {
   return (
-    <Backdrop open={open} onClose={onClose}>
-      <ModalStyle {...rest}>{children}</ModalStyle>
-    </Backdrop>
+    <div className={`fixed inset-0  ${open ? "visible" : "invisible"}`}>
+      <div
+        onClick={onClose}
+        className=" fixed inset-0 bg-gray-300 bg-opacity-30 backdrop-blur-sm z-1 flex justify-center items-center"
+      >
+        <div
+          className={` p-8 max-h-screen rounded-md ${
+            rest.borderRadius || "rounded"
+          } ${rest.backgroundColor || ""}`}
+        >
+          {children}
+        </div>
+      </div>
+    </div>
   );
 };
-const ModalStyle = styled(Box)(({ ...rest }) => ({
-  position: "fixed",
-  borderRadius: rest.borderRadius || "1rem",
-  backgroundColor: rest.backgroundColor || "none",
-  maxHeight: "100vh",
-}));
-const Backdrop = styled(Modal)(({ ...rest }) => ({
-  position: "fixed",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  top: "0",
-  left: "0",
-  right: "0",
-  bottom: "0",
-  width: "100%",
-  height: "100vh",
-  backgroundColor: "rgba(240, 230, 230, 0.288)",
-  backdropFilter: rest.backdropFilter || "blur(2px)",
-  zIndex: "990",
-  // minHeight: '11.615rem',
-}));
