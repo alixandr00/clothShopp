@@ -25,7 +25,7 @@ export const MainTodoClothes = ({ clothes, openSidebar, deleteHandler }) => {
   return (
     <div
       className={`mt-8 flex flex-wrap gap-8 ${
-        openSidebar ? "ml-[18rem]" : "ml-[1rem]"
+        openSidebar ? "ml-[18rem]" : "ml-[4rem]"
       } transition-ml duration-700 `}
     >
       {clothes?.map((data) => (
