@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { v4 as uuidv4 } from "uuid";
-import { RatingStars } from "./RatingStars";
+// import { RatingStars } from "../RatingStars";
 
 export const MainModal = ({
   openMainModalHandler,
@@ -14,7 +14,7 @@ export const MainModal = ({
   const [nameValue, setNameValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [sizeValue, setSizeValue] = useState("");
-  const [rating, setRating] = useState(0); // Начальный рейтинг
+  // const [rating, setRating] = useState(0); // Начальный рейтинг
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -32,7 +32,7 @@ export const MainModal = ({
       price: `${priceValue} com`,
       size: sizeValue,
       img: selectedFile ? URL.createObjectURL(selectedFile) : null,
-      rating: rating, // Добавляем рейтинг к данным
+      // rating: rating, // Добавляем рейтинг к данным
     };
     const updatedClothes = [...clothes, data];
     setClothes(updatedClothes);
@@ -42,14 +42,14 @@ export const MainModal = ({
     setPriceValue("");
     setSizeValue("");
     setSelectedFile(null);
-    setRating(0); // Сброс рейтинга после добавления
+    // setRating(0); // Сброс рейтинга после добавления
     setOpenMainModal(false);
   };
 
   // Функция для установки рейтинга
-  const setRatingHandler = (newRating) => {
-    setRating(newRating);
-  };
+  // const setRatingHandler = (newRating) => {
+  // setRating(newRating);
+  // };
 
   return (
     <div className="fixed top-0 flex justify-center items-center w-screen h-screen z-50">
@@ -135,9 +135,9 @@ dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-5
             </label>
           </div>
         )}
-        <div className="flex justify-center items-center mt-4">
-          <RatingStars rating={rating} setRating={setRatingHandler} />
-        </div>
+        {/* <div className="flex justify-center items-center mt-4"> */}
+        {/* <RatingStars rating={rating} setRating={setRatingHandler} /> */}
+        {/* </div> */}
         <div className="w-full mt-4 flex justify-end">
           <button
             onClick={openMainModalHandler}

@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import DeleteIcon from "../../assets/icons/deleteicon.svg";
+import { MainDeleteModal } from "./moda/MainDeleteModal";
 
 export const MainTodoClothes = ({ clothes, openSidebar, deleteHandler }) => {
-  console.log(clothes?.map((data) => data.img));
+  const [openMainDeleteModal, setOpenMainDeleteModal] = useState(false);
+  const [deleteItemId, setDeleteItemId] = useState(null);
+
+  const openDeleteModalHandler = (id) => {
+    setDeleteItemId(id);
+    setOpenMainDeleteModal(true);
+  };
+  const closeDeleteModalHandler = () => {
+    setDeleteItemId(null);
+    setOpenMainDeleteModal(false);
+  };
+
+  const confirmDeleteHandler = () => {
+    if (deleteItemId) {
+      deleteHandler(deleteItemId);
+      setDeleteItemId(null);
+      setOpenMainDeleteModal(false);
+    }
+  };
   return (
     <div
       className={`mt-8 flex flex-wrap gap-8 ${
@@ -18,7 +37,7 @@ export const MainTodoClothes = ({ clothes, openSidebar, deleteHandler }) => {
             className="w-[1.5rem] h-[1.5rem] absolute left-[12.3rem] cursor-pointer"
             src={DeleteIcon}
             alt=""
-            onClick={() => deleteHandler(data.id)}
+            onClick={() => openDeleteModalHandler(data.id)}
           />
           <img
             className="w-[14rem] h-[22vh] object-cover mx-auto mb-4 rounded-lg"
@@ -39,6 +58,13 @@ export const MainTodoClothes = ({ clothes, openSidebar, deleteHandler }) => {
           </div>
         </div>
       ))}
+      {openMainDeleteModal && (
+        <MainDeleteModal
+          openDeleteModalHandler={openDeleteModalHandler}
+          closeDeleteModalHandler={closeDeleteModalHandler}
+          deleteHandler={confirmDeleteHandler}
+        />
+      )}
     </div>
   );
 };
