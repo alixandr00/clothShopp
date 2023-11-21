@@ -10,7 +10,7 @@ export const Sidebar = ({ setOpenSidebar, openSidebar }) => {
   };
 
   return (
-    <div className="fixed ">
+    <div className="fixed mt-[6rem]">
       <IconButton
         className={`w-12 h-12 cursor-pointer absolute rounded-[1rem] transition-all duration-700${
           openSidebar ? "bg-[#1f2a46] left-[14rem] top-2" : ""
