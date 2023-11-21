@@ -5,3 +5,46 @@
 body {
   background: rgb(27, 20, 64);
 }
+
+html {
+  box-sizing: border-box;
+  --duration: 0.45s;
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --color-1: #cdb4db;
+  --color-2: #a2d2ff;
+}
+
+html *,
+html *::before,
+html *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: auto;
+  background: rgb(34, 108, 91);
+  background: radial-gradient(
+    circle,
+    rgb(91, 98, 96) 0%,
+    rgb(48, 48, 48) 35%,
+    rgb(97, 96, 95) 59%,
+    rgb(52, 59, 61) 100%
+  );
+  animation: gradient 25s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
