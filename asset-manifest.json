@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/clothShopp/static/css/main.bf81beff.css",
-    "main.js": "/clothShopp/static/js/main.9bf597ef.js",
-    "index.html": "/clothShopp/index.html",
-    "static/media/deleteicon.svg": "/clothShopp/static/media/deleteicon.8fe948d0c6d38162c7b8410001eb07d8.svg",
-    "static/media/menu-alt-02-svgrepo-com.svg": "/clothShopp/static/media/menu-alt-02-svgrepo-com.ffda76d131c33f3f92527920abf056a6.svg",
-    "static/media/menu-alt-03-svgrepo-com.svg": "/clothShopp/static/media/menu-alt-03-svgrepo-com.fc0ef1c596a26eaa880c4c6009813a06.svg",
-    "main.bf81beff.css.map": "/clothShopp/static/css/main.bf81beff.css.map",
-    "main.9bf597ef.js.map": "/clothShopp/static/js/main.9bf597ef.js.map"
+    "main.css": "/clothshopp/static/css/main.bf81beff.css",
+    "main.js": "/clothshopp/static/js/main.e3a8d18d.js",
+    "index.html": "/clothshopp/index.html",
+    "static/media/deleteicon.svg": "/clothshopp/static/media/deleteicon.8fe948d0c6d38162c7b8410001eb07d8.svg",
+    "static/media/menu-alt-02-svgrepo-com.svg": "/clothshopp/static/media/menu-alt-02-svgrepo-com.ffda76d131c33f3f92527920abf056a6.svg",
+    "static/media/menu-alt-03-svgrepo-com.svg": "/clothshopp/static/media/menu-alt-03-svgrepo-com.fc0ef1c596a26eaa880c4c6009813a06.svg",
+    "main.bf81beff.css.map": "/clothshopp/static/css/main.bf81beff.css.map",
+    "main.e3a8d18d.js.map": "/clothshopp/static/js/main.e3a8d18d.js.map"
   },
   "entrypoints": [
     "static/css/main.bf81beff.css",
-    "static/js/main.9bf597ef.js"
+    "static/js/main.e3a8d18d.js"
   ]
 }
