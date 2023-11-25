@@ -5,12 +5,13 @@ import { Main } from "../components/main/Main";
 
 export const LayoutComponents = () => {
   const [openSidebar, setOpenSidebar] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div>
-      <Header />
+      <Header setSearchTerm={setSearchTerm} />
       <Sidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
-      <Main openSidebar={openSidebar} />
+      <Main openSidebar={openSidebar} searchTerm={searchTerm} />
     </div>
   );
 };

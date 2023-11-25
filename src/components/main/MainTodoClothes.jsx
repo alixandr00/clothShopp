@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import DeleteIcon from "../../assets/icons/deleteicon.svg";
 import { MainDeleteModal } from "./moda/MainDeleteModal";
 
-export const MainTodoClothes = ({ clothes, openSidebar, deleteHandler }) => {
+export const MainTodoClothes = ({
+  clothes,
+  openSidebar,
+  deleteHandler,
+  searchTerm,
+}) => {
   const [openMainDeleteModal, setOpenMainDeleteModal] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
 
@@ -24,7 +29,9 @@ export const MainTodoClothes = ({ clothes, openSidebar, deleteHandler }) => {
   };
   return (
     <div
-      className={`mt-8 flex flex-wrap gap-8 ${
+      className={`${
+        searchTerm !== "create" ? "mt-[8rem]" : "mt-8"
+      }  flex flex-wrap gap-8 ${
         openSidebar ? "ml-[18rem]" : "ml-[4rem]"
       } transition-ml duration-700 `}
     >
