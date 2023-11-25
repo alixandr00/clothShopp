@@ -1,6 +1,9 @@
 import React from "react";
 
-export const Header = () => {
+export const Header = ({ setSearchTerm }) => {
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
   return (
     <div>
       <nav className="bg-white border-gray-200 dark:bg-gray-900 h-24 pt-3 fixed inset-x-0 top-0 z-50">
@@ -41,6 +44,7 @@ export const Header = () => {
                   id="simple-search"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Search "
+                  onChange={handleSearchChange}
                   required
                 />
               </div>

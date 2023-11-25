@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MainTodoClothes } from "./MainTodoClothes";
 import { MainModal } from "./moda/MainModal";
 
-export const Main = ({ openSidebar }) => {
+export const Main = ({ openSidebar, searchTerm }) => {
   const [openMainModal, setOpenMainModal] = useState(false);
   const [clothes, setClothes] = useState([]);
 
@@ -23,12 +23,14 @@ export const Main = ({ openSidebar }) => {
 
   return (
     <div>
-      <button
-        className="mt-[7rem] ml-[20rem] inline-block outline-none appearance-none px-3 rounded-4 no-underline bg-gray-200 border border-gray-500 shadow-md text-gray-700 text-base font-normal h-10 transition-all duration-150 ease-in-out hover:text-gray-700 hover:bg-white hover:border-gray-600 focus:outline-none focus:shadow-outline"
-        onClick={openMainModalHandler}
-      >
-        добавить одежду
-      </button>
+      {searchTerm.toLowerCase() === "create" && (
+        <button
+          className="mt-[7rem] ml-[20rem] inline-block outline-none appearance-none px-3 rounded-4 no-underline bg-gray-200 border border-gray-500 shadow-md text-gray-700 text-base font-normal h-10 transition-all duration-150 ease-in-out hover:text-gray-700 hover:bg-white hover:border-gray-600 focus:outline-none focus:shadow-outline"
+          onClick={openMainModalHandler}
+        >
+          добавить одежду
+        </button>
+      )}
       {openMainModal && (
         <MainModal
           setOpenMainModal={setOpenMainModal}
@@ -38,6 +40,7 @@ export const Main = ({ openSidebar }) => {
         />
       )}
       <MainTodoClothes
+        searchTerm={searchTerm}
         deleteHandler={deleteHandler}
         openSidebar={openSidebar}
         clothes={clothes}
