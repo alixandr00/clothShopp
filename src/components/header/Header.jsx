@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Header = ({ setSearchTerm }) => {
   const handleSearchChange = (event) => {
@@ -70,9 +71,9 @@ export const Header = ({ setSearchTerm }) => {
                 <span className="sr-only">Search</span>
               </button>
             </form>
-            <a className="text-blue-500 cursor-pointer to-[#3F5FB0] transform hover:scale-105 transition-transform duration-300">
+            <Link className="text-blue-500 cursor-pointer to-[#3F5FB0] transform hover:scale-105 transition-transform duration-300">
               +996 224 24 04 13
-            </a>
+            </Link>
           </div>
           <div
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
@@ -105,29 +106,29 @@ export const Header = ({ setSearchTerm }) => {
             </div>
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
-                <a
+                <Link
                   href="#"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:p-0 transition duration-300 border-b-2 border-transparent hover:border-blue-500"
                   aria-current="page"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:p-0 transition duration-300 border-b-2 border-transparent hover:border-blue-500"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:p-0 transition duration-300 border-b-2 border-transparent hover:border-blue-500"
                 >
                   Services
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
