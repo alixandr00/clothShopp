@@ -15,6 +15,7 @@ export const MainTodoClothes = ({
     setDeleteItemId(id);
     setOpenMainDeleteModal(true);
   };
+
   const closeDeleteModalHandler = () => {
     setDeleteItemId(null);
     setOpenMainDeleteModal(false);
@@ -27,10 +28,11 @@ export const MainTodoClothes = ({
       setOpenMainDeleteModal(false);
     }
   };
+
   return (
     <div
       className={`${
-        searchTerm !== "create" ? "mt-[8rem]" : "mt-8"
+        searchTerm !== "create" ? "mt-[2rem]" : "mt-8"
       }  flex flex-wrap gap-8 ${
         openSidebar ? "ml-[18rem]" : "ml-[4rem]"
       } transition-ml duration-700 `}
