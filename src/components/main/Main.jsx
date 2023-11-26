@@ -1,3 +1,4 @@
+// Main.js
 import React, { useEffect, useState } from "react";
 import { MainTodoClothes } from "./MainTodoClothes";
 import { MainModal } from "./moda/MainModal";
@@ -6,6 +7,7 @@ export const Main = ({ openSidebar, searchTerm }) => {
   const [openMainModal, setOpenMainModal] = useState(false);
   const [clothes, setClothes] = useState([]);
   const [selectedSizeRange, setSelectedSizeRange] = useState("");
+  const [selectedPriceRange, setSelectedPriceRange] = useState("");
 
   const openMainModalHandler = () => {
     setOpenMainModal((prev) => !prev);
@@ -26,6 +28,10 @@ export const Main = ({ openSidebar, searchTerm }) => {
     setSelectedSizeRange(event.target.value);
   };
 
+  const handlePriceRangeChange = (event) => {
+    setSelectedPriceRange(event.target.value);
+  };
+
   const filterClothesBySizeRange = (clothes, sizeRange) => {
     if (!sizeRange) {
       return clothes;
@@ -34,8 +40,17 @@ export const Main = ({ openSidebar, searchTerm }) => {
     return clothes.filter((item) => item.size >= min && item.size <= max);
   };
 
+  const filterClothesByPriceRange = (clothes, priceRange) => {
+    if (!priceRange) {
+      return clothes;
+    }
+    const [min, max] = priceRange.split("-").map(Number);
+    return clothes.filter((item) => item.price >= min && item.price <= max);
+  };
+
   return (
     <div>
+      {/* Селект для размеров */}
       <select
         className="mt-[7rem] ml-[20rem] appearance-none px-3 py-2 rounded-md border border-gray-300 shadow-sm text-base focus:outline-none focus:ring focus:border-blue-300"
         onChange={handleSizeRangeChange}
@@ -47,6 +62,21 @@ export const Main = ({ openSidebar, searchTerm }) => {
         <option className="py-2">20-30</option>
         <option className="py-2">30-40</option>
         <option className="py-2">40-50</option>
+      </select>
+
+      {/* Селект для цен */}
+      <select
+        className="mt-4 ml-[20rem] appearance-none px-3 py-2 rounded-md border border-gray-300 shadow-sm text-base focus:outline-none focus:ring focus:border-blue-300"
+        onChange={handlePriceRangeChange}
+        value={selectedPriceRange}
+      >
+        <option className="py-2">Все цены</option>
+        <option className="py-2">1-1000</option>
+        <option className="py-2">1000-2000</option>
+        <option className="py-2">2000-3000</option>
+        <option className="py-2">3000-4000</option>
+        <option className="py-2">4000-5000</option>
+        {/* Добавьте необходимые интервалы в соответствии с вашими требованиями */}
       </select>
 
       {searchTerm.toLowerCase() === "create" && (
@@ -70,7 +100,10 @@ export const Main = ({ openSidebar, searchTerm }) => {
         searchTerm={searchTerm}
         deleteHandler={deleteHandler}
         openSidebar={openSidebar}
-        clothes={filterClothesBySizeRange(clothes, selectedSizeRange)}
+        clothes={filterClothesBySizeRange(
+          filterClothesByPriceRange(clothes, selectedPriceRange),
+          selectedSizeRange
+        )}
       />
     </div>
   );
